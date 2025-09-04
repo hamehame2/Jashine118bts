@@ -114,7 +114,7 @@
 				&mt LCTRL CAPS &kp A  &kp S  &kp D  &kp F &kp G    &kp H &kp J &kp K &kp L &kp SEMI &kp SQT                                         &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp H
 				&kp LSHFT      &kp Z  &kp X  &kp C  &kp V &kp B    &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &lt SCROLL BACKSLASH                     &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &lt SCROLL BACKSLASH &kp G
 				&kp LCTRL      &kp LWIN &kp LALT &lt MUHEN BSPC &SandS LSHFT SPACE &none   &lt LOWER RET &lt RAISE RET &SandS LSHFT SPACE &kp A &kp B &kp C                               &kp A &kp B       &kp C &kp D &kp E &kp F
-            >;--
+            >;
         };
 
         layer_1 {
