@@ -1,6 +1,8 @@
 # Jashin118bts
 
-## Preview
+## 17 mm key pitch wireless 70%+ split 40% trackball -> transform to user's ideal keydoards for geek officeworker
+## Who will be match  
+  Recommended for those considering their first split keyboard, feeling uncertain about compact keyboards, preferring full-size keyboards, or wanting to try column staggered layouts.
 ## Parts List
 
 |Part|Quantity|
