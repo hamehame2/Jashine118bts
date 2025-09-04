@@ -1,0 +1,4 @@
+config SHIELD_JASHIN17MMV02C_LEFT
+    def_bool $(shields_list_contains,jashin17mmv02c_left)
+config SHIELD_JASHIN17MMV02C_RIGHT
+    def_bool $(shields_list_contains,jashin17mmv02c_right)

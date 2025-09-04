@@ -1,0 +1,14 @@
+
+if SHIELD_JASHIN17MMV02C_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "jashin17mmv02c"
+
+endif
+
+if SHIELD_JASHIN17MMV02C_LEFT || SHIELD_JASHIN17MMV02C_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif

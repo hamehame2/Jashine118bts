@@ -1,0 +1,14 @@
+
+file_format: "1"
+id: jashin17mmv02c
+name: jashin17mmv02c
+type: shield
+features:
+  - keys
+  - studio
+outputs:
+  - usb
+  - ble
+siblings:
+  - jashin17mmv02c_left
+  - jashin17mmv02c_right
