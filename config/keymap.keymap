@@ -108,23 +108,23 @@
 
         layer_0 {
             bindings =<
-                &kp GRAVE      &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &bt BT_CLR_ALL &bt BT_CLR &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1          &bt BT_CLR_ALL &bt BT_CLR &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
+                &kp GRAVE      &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F13 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
 				&kp ESC        &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS                                     &kp INT1 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp INT3
-				&kp TAB        &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp U &kp I &kp O &kp P &kp EQUAL                                          &kp APOS &kp Y &kp U &kp I &kp O &kp P &kp EQUAL &kp LANG5
+				&kp TAB        &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp U &kp I &kp O &kp P &kp EQUAL                                          &kp APOS &kp Y &kp U &kp I &kp O &kp P &kp EQUAL &kp A
 				&mt LCTRL CAPS &kp A  &kp S  &kp D  &kp F &kp G    &kp H &kp J &kp K &kp L &kp SEMI &kp SQT                                         &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp H
 				&kp LSHFT      &kp Z  &kp X  &kp C  &kp V &kp B    &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &lt SCROLL BACKSLASH                     &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &lt SCROLL BACKSLASH &kp G
-				&kp LCTRL      &kp LWIN &kp LALT &lt MUHEN BSPC &SandS LSHFT SPACE &none   &lt LOWER RET &lt RAISE RET &SandS LSHFT SPACE &kp A &kp B &kp C                               &kp A &kp B       &kp C &kp D &kp E &kp F
+				&kp LCTRL      &kp LWIN &kp LALT &mo NAGINATA &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &SandS LSHFT SPACE &kp A &kp B &kp LCTRL               &SandS LSHFT SPACE &lt RAISE RET            &kp B  &kp C &kp D &kp E
             >;
         };
 
         layer_1 {
             bindings =<
-                &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &kp GRAVE      &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &bt BT_CLR_ALL &bt BT_CLR &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1          &bt BT_CLR_ALL &bt BT_CLR &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
+				&kp ESC        &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS                                     &kp INT1 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp INT3
+				&kp TAB        &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp U &kp I &kp O &kp P &kp EQUAL                                          &kp APOS &kp Y &kp U &kp I &kp O &kp P &kp EQUAL &kp A
+				&mt LCTRL CAPS &kp A  &kp S  &kp D  &kp F &kp G    &kp H &kp J &kp K &kp L &kp SEMI &kp SQT                                         &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp H
+				&kp LSHFT      &kp Z  &kp X  &kp C  &kp V &kp B    &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &lt SCROLL BACKSLASH                     &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &lt SCROLL BACKSLASH &kp G
+				&kp LCTRL      &kp LWIN &kp LALT &mo NAGINATA &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &SandS LSHFT SPACE &kp A &kp B &kp LCTRL               &SandS LSHFT SPACE &lt RAISE RET            &kp B  &kp C &kp D &kp E
             >;
         };
 
