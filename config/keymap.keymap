@@ -11,6 +11,7 @@
 
 #include <input/processors.dtsi>
 
+
 #define BASE     0
 #define NAGINATA 1
 #define MOUSE    2
@@ -101,6 +102,30 @@
     };
 };
 
+//#include <layout_shift_kp_override.dtsi>
+// Layout Shift Overlay - Replaces &kp behavior with custom implementation
+// This file should be included in keyboard config to override &kp behavior
+
+#include "layout_shift.dtsi"
+
+/ {
+    behaviors {
+        // Keep the original key_press behavior for ZMK core components
+        original_key_press: original_key_press {
+            compatible = "zmk,behavior-key-press";
+            #binding-cells = <1>;
+            label = "KEY_PRESS";
+        };
+
+        // Override the existing &kp behavior to use our custom implementation
+        kp: key_press {
+            compatible = "zmk,behavior-layout-shift-key-press";
+            #binding-cells = <1>;
+            label = "LAYOUT_SHIFT_KEY_PRESS";
+        };
+    };
+};
+
 
 / {
     keymap {
@@ -108,12 +133,12 @@
 
         layer_0 {
             bindings =<
-                &kp GRAVE      &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F13 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-				&kp ESC        &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS                                     &kp INT1 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp INT3
+                &kp ESC        &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F12 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
+				&kp GRAVE      &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS                                     &kp INT1 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp INT3
 				&kp TAB        &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp U &kp I &kp O &kp P &kp EQUAL                                          &kp APOS &kp Y &kp U &kp I &kp O &kp P &kp EQUAL &kp A
 				&mt LCTRL CAPS &kp A  &kp S  &kp D  &kp F &kp G    &kp H &kp J &kp K &kp L &kp SEMI &kp SQT                                         &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp H
 				&kp LSHFT      &kp Z  &kp X  &kp C  &kp V &kp B    &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &lt SCROLL BACKSLASH                     &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &lt SCROLL BACKSLASH &kp G
-				&kp LCTRL      &kp LWIN &kp LALT &mo NAGINATA &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &SandS LSHFT SPACE &kp A &kp B &kp LCTRL               &SandS LSHFT SPACE &lt RAISE RET            &kp B  &kp C &kp D &kp E
+				&kp LCTRL      &kp LWIN &kp LALT &to NAGINATA &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &SandS LSHFT SPACE &kp A &kp B &kp LCTRL               &SandS LSHFT SPACE &lt RAISE RET            &kp B  &kp C &kp D &kp E
             >;
         };
 
