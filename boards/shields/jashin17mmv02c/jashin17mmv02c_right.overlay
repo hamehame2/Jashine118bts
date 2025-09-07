@@ -54,6 +54,17 @@
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_temp_layer 2 350>;
+
+    /* レイヤー3でだけスクロール化する“オーバーライド” */
+    scroller {
+        layers = <3>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+            <&zip_xy_scaler 1 20>,
+            <&zip_xy_to_scroll_mapper>;
+        /* base（親）の input-processors も併用したいなら↓を有効化
+         * process-next;
+         */
     };
 };
 
