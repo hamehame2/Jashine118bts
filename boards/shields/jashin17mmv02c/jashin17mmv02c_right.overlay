@@ -65,6 +65,7 @@
         /* base（親）の input-processors も併用したいなら↓を有効化
          * process-next;
          */
+		};
     };
 };
 
