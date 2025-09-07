@@ -53,9 +53,9 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-                        &zip_temp_layer MOUSE 350>;
+                        &zip_temp_layer 2 350>;
     scroller {
-        layers = <SCROLL>;
+        layers = <3>;
         input-processors = <
                             &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)
                             &zip_xy_scaler 1 20
