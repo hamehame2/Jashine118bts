@@ -1,15 +1,15 @@
-
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-
 #include <dt-bindings/zmk/mouse.h>
 
 //#include <behaviors/rgbled_widget.dtsi>
+#include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
+//#include <behaviors/naginata.dtsi>
 
 #include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 
 
 #define BASE     0
@@ -22,6 +22,22 @@
 #define SCROLL   3
 #define MUHEN   7
 #define HENKA   8
+
+// スクロール量の設定
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 100
+
+&trackball_listener {
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT | INPUT_TRANSFORM_X_INVERT)
+                        &zip_temp_layer MOUSE 500>;
+    scroller {
+        layers = <SCROLL>;
+        input-processors = <
+                            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)
+                            &zip_xy_scaler 1 20
+                            &zip_xy_to_scroll_mapper
+                            >;
+    };
+};
 
 / {
     conditional_layers {
@@ -211,10 +227,10 @@
         layer_7 {
             bindings =<
                 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
-				&trans &kp LC(EXCL) &kp LC(AT) &kp LC(HASH)    &kp LC(DLLR)       &kp LC(PRCNT) &trans &trans &trans &trans &trans &trans           &trans &trans &kp LC(CARET)  &kp LC(AMPS)   &kp LC(ASTRK) &kp LC(LPAR) &kp LC(RPAR) &trans
-				&trans &kp HOME       &kp F17        &kp UP        &kp LS(RIGHT)   &kp END  &trans &trans &trans &trans &trans &trans               &trans &trans &kp LALT       &kp LC(U)        &kp TAB        &kp F7         &kp LC(P)       &kp PG_DN
-				&trans &kp LC(BSPC)   &kp LEFT       &kp DOWN      &kp RIGHT       &kp DEL &kp KP_NUM &trans &trans &trans &trans &trans            &trans &kp LC(F8) &kp BSPC       &kp LG(SLASH)    &kp LC(Z)      &kp LA(TAB)    &kp LC(LA(TAB))   &kp LC(F)
-				&trans &kp LC(D)      &kp LC(X)      &kp  LC(C)    &kp LC(V)       &kp F16 &kp F12 &trans &trans &trans &trans &trans               &trans &kp RBKT  &kp LC(LA(TAB)) &kp LC(LS(TAB))  &kp LC(Y)      &kp LC(TAB)    &kp LG(TAB)     &kp LG(D)
+				&trans &kp LC(EXCL) &kp LC(AT) &kp LC(HASH)    &kp LC(DLLR)       &kp LC(PRCNT) &trans &trans &trans &trans &trans &trans           &trans &kp LC(CARET)  &kp LC(AMPS)   &kp LC(ASTRK) &kp LC(LPAR) &kp LC(RPAR) &trans &trans
+				&trans &kp HOME       &kp F17        &kp UP        &kp LS(RIGHT)   &kp END  &trans &trans &trans &trans &trans &trans               &trans &kp LALT       &kp LC(U)        &kp TAB        &kp F7         &kp LC(P)       &kp PG_DN &trans
+				&trans &kp LC(BSPC)   &kp LEFT       &kp DOWN      &kp RIGHT       &kp DEL &kp KP_NUM &trans &trans &trans &trans &trans            &kp LC(F8) &kp BSPC       &kp LG(SLASH)    &kp LC(Z)      &kp LA(TAB)    &kp LC(LA(TAB))   &kp LC(F) &trans
+				&trans &kp LC(D)      &kp LC(X)      &kp  LC(C)    &kp LC(V)       &kp F16 &kp F12 &trans &trans &trans &trans &trans               &kp RBKT  &kp LC(LA(TAB)) &kp LC(LS(TAB))  &kp LC(Y)      &kp LC(TAB)    &kp LG(TAB)     &kp LG(D) &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &kp LC(W) &kp LC(W) &trans &trans
             >;
         };
