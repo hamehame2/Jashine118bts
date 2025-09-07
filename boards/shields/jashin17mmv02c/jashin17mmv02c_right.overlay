@@ -55,17 +55,6 @@
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_temp_layer 2 350>;
     };
-
-    /* === スクロール専用（レイヤー3でのみ有効） === */
-    scroll_listener: scroll_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-        layers = <3>;
-        input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
-            <&zip_xy_scaler 1 20>,
-            <&zip_xy_to_scroll_mapper>;
-    };
 };
 
 &physical_layout0 {
