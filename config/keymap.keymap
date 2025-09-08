@@ -129,13 +129,39 @@
     };
 };
 
+
+/ {
+  macros {
+    // 1) Shift+Enter → Backspace
+    se_then_bs: se_then_bs {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&kp LS(RET) &kp BSPC>;
+    };
+
+    // Enter → End
+    enter_then_end: enter_then_end {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&kp RET &kp END>;
+
+    // left → henkan
+    left_then_henkan: left_then_henkan {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&kp LEFT &kp LG(SLASH)>;
+
+    };
+  };
+
+
 / {
   combos {
     compatible = "zmk,combos";
 
     // 84 + 94 → Enter
     combo_enter_84_94 {
-      timeout-ms = <60>;
+      timeout-ms = <80>;
       key-positions = <84 94>;
       bindings = <&kp RET>;
       // 必要なら：layers = <0>;
@@ -144,17 +170,74 @@
     // 63 + 64 + 77 → カタカナ変換
     // ① F7 を送る（既定のカタカナ変換）
     combo_katakana_f7 {
-      timeout-ms = <60>;
+      timeout-ms = <80>;
       key-positions = <63 64 77>;
       bindings = <&kp F7>;
     };
 
     // ② 代替：Ctrl+I を送る（片方だけ使うなら上とどちらかをコメントアウト）
     // combo_katakana_ctrl_i {
-    //   timeout-ms = <60>;
+    //   timeout-ms = <80>;
     //   key-positions = <63 64 77>;
     //   bindings = <&kp LC(I)>;
     // };
+    // 例: 84+94 で Shift+Enter→Backspace
+    combo_se_bs {
+      timeout-ms = <80>;
+      key-positions = <63 64 54>;
+      bindings = <&se_then_bs>;
+
+    // 例: 84+94 で re heskan left→henkan
+    combo_le_bs {
+      timeout-ms = <80>;
+      key-positions = <63 64 55>;
+      bindings = <&left_then_henkan>;
+
+    // 例: 84+94 で Del
+    combo_DEL {
+      timeout-ms = <80>;
+      key-positions = <63 64 56>;
+      bindings = <&kp DEL>;
+
+    // 例: 84+94 で ESC
+    combo_DEL {
+      timeout-ms = <80>;
+      key-positions = <63 64 57>;
+      bindings = <&kp ESC>;
+
+    // 84 + 94 → Enter の後 End
+    combo_enter_84_94 {
+      timeout-ms = <80>;
+      key-positions = <63 64 73>;
+      bindings = <&enter_then_end>;   // ← ここをマクロに差し替え
+      // 必要なら：layers = <0>;  // ベース層だけで有効にしたい場合
+    // 84 + 94 → RIGHT
+    combo_RIGHT {
+      timeout-ms = <80>;
+      key-positions = <63 64 74>;
+      bindings = <&kp RIGHTI>;   // ← ここをマクロに差し替え
+      // 必要なら：layers = <0>;  // ベース層だけで有効にしたい場合
+    // 84 + 94 → Enter の後 End
+    combo_SRIGHT {
+      timeout-ms = <80>;
+      key-positions = <63 64 75>;
+      bindings = <&kp LS(RIGHTI)>;   // ← ここをマクロに差し替え
+      // 必要なら：layers = <0>;  // ベース層だけで有効にしたい場合
+    // 84 + 94 → Enter の後 End
+    combo_LEFT {
+      timeout-ms = <80>;
+      key-positions = <63 64 94>;
+      bindings = <&kp LEFT)>;   // ← ここをマクロに差し替え
+      // 必要なら：layers = <0>;  // ベース層だけで有効にしたい場合
+    // 84 + 94 → Enter の後 End
+    combo_SLEFT {
+      timeout-ms = <80>;
+      key-positions = <63 64 95>;
+      bindings = <&kp LS(LEFT)>;   // ← ここをマクロに差し替え
+      // 必要なら：layers = <0>;  // ベース層だけで有効にしたい場合
+
+    };
+    };
   };
 };
 
