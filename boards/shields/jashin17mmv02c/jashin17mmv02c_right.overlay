@@ -75,7 +75,7 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-        <&zip_xy_scaler 1 12>,   /* カーソル速度 */
+        <&zip_xy_scaler 1 2>,   /* カーソル速度 二分の一*/
         <&zip_temp_layer 2 350>;
 
     /* 縦スクロール：レイヤー3でのみ有効 */
@@ -83,8 +83,9 @@
         layers = <3>;
         input-processors =
             /* 必要ならXY_SWAPで “物理XをY側へ” 回してから */
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
-            <&zip_xy_scaler 1 16>,       /* 縦スクロール速度 */
+            /* <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,*/
+            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,  /* 方向が合えば Y_INVERT は外してOK */
+            <&zip_xy_scaler 1 4>,       /* 縦スクロール速度 */
 	        <&y_to_scroll_mapper>;      /* ★ 角括弧つきに ← 片軸（Yのみ）へ変換 */
         /* process-next; // 縦スクロール中もAML維持したい時だけ有効化 */
     };
