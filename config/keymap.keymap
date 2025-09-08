@@ -130,127 +130,127 @@
 };
 
 
-#if 0  // ← 無効化　新下駄が相性悪いため
-	/ {
-	  macros {
-	    // 1) Shift+Enter → Backspace
-	    se_then_bs: se_then_bs {
-	      compatible = "zmk,behavior-macro";
-	      #binding-cells = <0>;
-	      bindings = <&kp LS(RET) &kp BSPC>;
-	    };
+// コンボ無効化　新下駄が薙刀の編集モード相性悪いため
+	/// {
+	  //macros {
+	    //// 1) Shift+Enter → Backspace
+	    //se_then_bs: se_then_bs {
+	      //compatible = "zmk,behavior-macro";
+	      //#binding-cells = <0>;
+	      //bindings = <&kp LS(RET) &kp BSPC>;
+	    //};
 	
-	    // 2) Enter → End
-	    enter_then_end: enter_then_end {
-	      compatible = "zmk,behavior-macro";
-	      #binding-cells = <0>;
-	      bindings = <&kp RET &kp END>;
-	    };
+	 //   // 2) Enter → End
+	   // enter_then_end: enter_then_end {
+	     // compatible = "zmk,behavior-macro";
+	      //#binding-cells = <0>;
+	      //bindings = <&kp RET &kp END>;
+	    //};
 	
-	    // 3) ← の後に 再変換 (Win + /)
-	    left_then_henkan: left_then_henkan {
-	      compatible = "zmk,behavior-macro";
-	      #binding-cells = <0>;
-	      bindings = <&kp LEFT &kp LG(SLASH)>;
-	    };
-	  };
-	};
+	    //// 3) ← の後に 再変換 (Win + /)
+	    //left_then_henkan: left_then_henkan {
+	      //compatible = "zmk,behavior-macro";
+	      //#binding-cells = <0>;
+	      //bindings = <&kp LEFT &kp LG(SLASH)>;
+	    //};
+	  //};
+	//};
 	
 	
-	/ {
-	  combos {
-	    compatible = "zmk,combos";
+	/// {
+	  //combos {
+	    //compatible = "zmk,combos";
 	
-	    // 84 + 94 → Enter
-	    combo_enter_84_94 {
-	      timeout-ms = <80>;
-	      key-positions = <84 94>;
-	      bindings = <&kp RET>;
-	      // layers = <0>;
-	    };
+	    //// 84 + 94 → Enter
+	    //combo_enter_84_94 {
+	      //timeout-ms = <80>;
+	      //key-positions = <84 94>;
+	      //bindings = <&kp RET>;
+	      //// layers = <0>;
+	    //};
 	
-	    // 63 + 64 + 77 → カタカナ変換 (F7)
-	    combo_katakana_f7 {
-	      timeout-ms = <80>;
-	      key-positions = <63 64 77>;
-	      bindings = <&kp F7>;
-	      // layers = <0>;
-	    };
+	    //// 63 + 64 + 77 → カタカナ変換 (F7)
+	    //combo_katakana_f7 {
+	      //timeout-ms = <80>;
+	      //key-positions = <63 64 77>;
+	      //bindings = <&kp F7>;
+	      //// layers = <0>;
+	    //};
 	
-	    // 63 + 64 + 54 → Shift+Enter → Backspace
-	    combo_se_bs_63_64_54 {
-	      timeout-ms = <80>;
-	      key-positions = <63 64 54>;
-	      bindings = <&se_then_bs>;
-	      // layers = <0>;
-	    };
+	    //// 63 + 64 + 54 → Shift+Enter → Backspace
+	    //combo_se_bs_63_64_54 {
+	      //timeout-ms = <80>;
+	      //key-positions = <63 64 54>;
+	      //bindings = <&se_then_bs>;
+	      //// layers = <0>;
+	    //};
 	
-	    // 63 + 64 + 55 → ← の後に 再変換 (Win+/)
-	    combo_left_then_henkan_63_64_55 {
-	      timeout-ms = <80>;
-	      key-positions = <63 64 55>;
-	      bindings = <&left_then_henkan>;
-	      // layers = <0>;
-	    };
+	    //// 63 + 64 + 55 → ← の後に 再変換 (Win+/)
+	    //combo_left_then_henkan_63_64_55 {
+	      //timeout-ms = <80>;
+	      //key-positions = <63 64 55>;
+	      //bindings = <&left_then_henkan>;
+	      //// layers = <0>;
+	    //};
 	
-	    // 63 + 64 + 56 → Delete
-	    combo_del_63_64_56 {
-	      timeout-ms = <80>;
-	      key-positions = <63 64 56>;
-	      bindings = <&kp DEL>;
-	      // layers = <0>;
-	    };
+	    //// 63 + 64 + 56 → Delete
+	    //combo_del_63_64_56 {
+	      //timeout-ms = <80>;
+	      //key-positions = <63 64 56>;
+	      //bindings = <&kp DEL>;
+	      //// layers = <0>;
+	    //};
 	
-	    // 63 + 64 + 57 → Esc
-	    combo_esc_63_64_57 {
-	      timeout-ms = <80>;
-	      key-positions = <63 64 57>;
-	      bindings = <&kp ESC>;
-	      // layers = <0>;
-	    };
+	    //// 63 + 64 + 57 → Esc
+	    //combo_esc_63_64_57 {
+	      //timeout-ms = <80>;
+	      //key-positions = <63 64 57>;
+	      //bindings = <&kp ESC>;
+	      //// layers = <0>;
+	    //};
 	
-	    // 63 + 64 + 73 → Enter → End
-	    combo_enter_then_end_63_64_73 {
-	      timeout-ms = <80>;
-	      key-positions = <63 64 73>;
-	      bindings = <&enter_then_end>;
-	      // layers = <0>;
-	    };
+	    //// 63 + 64 + 73 → Enter → End
+	    //combo_enter_then_end_63_64_73 {
+	      //timeout-ms = <80>;
+	      //key-positions = <63 64 73>;
+	      //bindings = <&enter_then_end>;
+	      //// layers = <0>;
+	    //};
 	
-	    // 63 + 64 + 74 → → (RIGHT)
-	    combo_right_63_64_74 {
-	      timeout-ms = <80>;
-	      key-positions = <63 64 74>;
-	      bindings = <&kp RIGHT>;
-	      // layers = <0>;
-	    };
+	    //// 63 + 64 + 74 → → (RIGHT)
+	    //combo_right_63_64_74 {
+	      //timeout-ms = <80>;
+	      //key-positions = <63 64 74>;
+	      //bindings = <&kp RIGHT>;
+	      //// layers = <0>;
+	    //};
 	
-	    // 63 + 64 + 75 → Shift+→
-	    combo_sright_63_64_75 {
-	      timeout-ms = <80>;
-	      key-positions = <63 64 75>;
-	      bindings = <&kp LS(RIGHT)>;
-	      // layers = <0>;
-	    };
+	    //// 63 + 64 + 75 → Shift+→
+	    //combo_sright_63_64_75 {
+	      //timeout-ms = <80>;
+	      //key-positions = <63 64 75>;
+	      //bindings = <&kp LS(RIGHT)>;
+	      //// layers = <0>;
+	    //};
 	
-	    // 63 + 64 + 94 → ← (LEFT)
-	    combo_left_63_64_94 {
-	      timeout-ms = <80>;
-	      key-positions = <63 64 94>;
-	      bindings = <&kp LEFT>;
-	      // layers = <0>;
-	    };
+	    //// 63 + 64 + 94 → ← (LEFT)
+	    //combo_left_63_64_94 {
+	      //timeout-ms = <80>;
+	      //key-positions = <63 64 94>;
+	      //bindings = <&kp LEFT>;
+	      //// layers = <0>;
+	    //};
 	
-	    // 63 + 64 + 95 → Shift+←
-	    combo_sleft_63_64_95 {
-	      timeout-ms = <80>;
-	      key-positions = <63 64 95>;
-	      bindings = <&kp LS(LEFT)>;
-	      // layers = <0>;
-	    };
-	  };
-	};
-#endif  // ← ここまで無効
+	    //// 63 + 64 + 95 → Shift+←
+	    //combo_sleft_63_64_95 {
+	      //timeout-ms = <80>;
+	      //key-positions = <63 64 95>;
+	      //bindings = <&kp LS(LEFT)>;
+	      //// layers = <0>;
+	    //};
+	  //};
+	//};
+// ← ここまで無効
 
 
 / {
