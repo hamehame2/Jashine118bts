@@ -4,6 +4,28 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include "layouts.dtsi"
 
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+    input_processors {
+        /* Y(縦) だけを 縦スクロール にマップ */
+        y_to_scroll_mapper: y_to_scroll_mapper {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_REL>;
+            map = <INPUT_REL_Y INPUT_REL_WHEEL>;
+        };
+
+        /* X(横) だけを 横スクロール にマップ */
+        x_to_hscroll_mapper: x_to_hscroll_mapper {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_REL>;
+            map = <INPUT_REL_X INPUT_REL_HWHEEL>;
+        };
+    };
+};
+
 / {
     chosen {
         zmk,physical-layout = &physical_layout0;
