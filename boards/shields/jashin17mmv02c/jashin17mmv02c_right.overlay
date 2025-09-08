@@ -98,6 +98,7 @@
             <&zip_xy_scaler 1 16>,       /* 横スクロール速度 */
             <&x_to_hscroll_mapper>;        /* ← 片軸（Xのみ）へ変換 */
         /* process-next; // 横スクロール中もAML維持したい時だけ有効化 */
+    	};
     };
 };
 
