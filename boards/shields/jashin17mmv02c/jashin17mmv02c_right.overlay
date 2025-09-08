@@ -75,19 +75,29 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_temp_layer 2 350>;
+        <&zip_xy_scaler 1 12>,   /* カーソル速度 */
+        <&zip_temp_layer 2 350>;
 
-    /* レイヤー3でだけスクロール化する“オーバーライド” */
-    scroller {
+    /* 縦スクロール：レイヤー3でのみ有効 */
+    scroller_v {
         layers = <3>;
         input-processors =
+            /* 必要ならXY_SWAPで “物理XをY側へ” 回してから */
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
-            <&zip_xy_scaler 1 20>,
-            <&zip_xy_to_scroll_mapper>;
-        /* base（親）の input-processors も併用したいなら↓を有効化
-         * process-next;
-         */
-		};
+            <&zip_xy_scaler 1 16>,       /* 縦スクロール速度 */
+            &y_to_scroll_mapper;         /* ← 片軸（Yのみ）へ変換 */
+        /* process-next; // 縦スクロール中もAML維持したい時だけ有効化 */
+    };
+
+    /* 横スクロール：レイヤー4でのみ有効 */
+    scroller_h {
+        layers = <4>;
+        input-processors =
+            /* XY_SWAP は使わず、必要なら X の反転だけ */
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+            <&zip_xy_scaler 1 16>,       /* 横スクロール速度 */
+            &x_to_hscroll_mapper;        /* ← 片軸（Xのみ）へ変換 */
+        /* process-next; // 横スクロール中もAML維持したい時だけ有効化 */
     };
 };
 
