@@ -129,6 +129,34 @@
     };
 };
 
+/ {
+  combos {
+    compatible = "zmk,combos";
+
+    // 84 + 94 → Enter
+    combo_enter_84_94 {
+      timeout-ms = <60>;
+      key-positions = <84 94>;
+      bindings = <&kp RET>;
+      // 必要なら：layers = <0>;
+    };
+
+    // 63 + 64 + 77 → カタカナ変換
+    // ① F7 を送る（既定のカタカナ変換）
+    combo_katakana_f7 {
+      timeout-ms = <60>;
+      key-positions = <63 64 77>;
+      bindings = <&kp F7>;
+    };
+
+    // ② 代替：Ctrl+I を送る（片方だけ使うなら上とどちらかをコメントアウト）
+    // combo_katakana_ctrl_i {
+    //   timeout-ms = <60>;
+    //   key-positions = <63 64 77>;
+    //   bindings = <&kp LC(I)>;
+    // };
+  };
+};
 
 / {
     keymap {
