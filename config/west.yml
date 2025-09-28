@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/sekigon-gonnoc
     - name: kot149
       url-base: https://github.com/kot149
+    - name: hamehame2
+      url-base: https://github.com/hamehame2
     # - name: caksoylar
     # url-base: https://github.com/caksoylar
   projects:
@@ -19,6 +21,9 @@ manifest:
     - name: zmk-layout-shift
       remote: kot149
       revision: v1
+    - name: zmk-naginata
+      remote: hamehame2
+      revision: main
     # - name: zmk-rgbled-widget
     #  remote: caksoylar
     #  revision: main
