@@ -69,7 +69,7 @@
 	      flavor = "balanced"; // "tap-preferred" / "hold-preferred" も可
 	
 	      // bindings は <タップ時, ホールド時>
-	      bindings = <&cap_ng_on>, <&kp LCTRL>;
+	      bindings = <&cap_ng_on &kp LCTRL>;
 		};
 
 	    CAP_NGOFF_CTRL: cap_ng_off_ctrl {
@@ -81,7 +81,7 @@
 	      flavor = "balanced"; // "tap-preferred" / "hold-preferred" も可
 	
 	      // bindings は <タップ時, ホールド時>
-	      bindings = <&cap_ng_off>, <&kp LCTRL>;
+	      bindings = <&cap_ng_off &kp LCTRL>;
         };
     };
 };
