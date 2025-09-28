@@ -58,6 +58,30 @@
             bindings = <&kp>, <&kp>;
 
             display-name = "SandS";
+		};
+
+	    CAP_NGON_CTRL: cap_ng_on_ctrl {
+	      compatible = "zmk,behavior-hold-tap";
+	      #binding-cells = <0>;
+	      // お好みで調整
+	      tapping-term-ms = <200>;
+	      quick-tap-ms    = <125>;
+	      flavor = "balanced"; // "tap-preferred" / "hold-preferred" も可
+	
+	      // bindings は <タップ時, ホールド時>
+	      bindings = <&cap_ng_on>, <&kp LCTRL>;
+		};
+
+	    CAP_NGOFF_CTRL: cap_ng_off_ctrl {
+	      compatible = "zmk,behavior-hold-tap";
+	      #binding-cells = <0>;
+	      // お好みで調整
+	      tapping-term-ms = <200>;
+	      quick-tap-ms    = <125>;
+	      flavor = "balanced"; // "tap-preferred" / "hold-preferred" も可
+	
+	      // bindings は <タップ時, ホールド時>
+	      bindings = <&cap_ng_off>, <&kp LCTRL>;
         };
     };
 };
@@ -102,6 +126,65 @@
                 <&macro_release>,
                 <&mo SCROLL>;
         };
+
+	    cap_ng_on: cap_ng_on {
+	      compatible = "zmk,behavior-macro";
+	      #binding-cells = <0>;
+	      bindings = <&kp LANG1 &to NAGINATA>;
+        };
+
+	    cap_ng_off: cap_ng_off {
+	      compatible = "zmk,behavior-macro";
+	      #binding-cells = <0>;
+	      bindings = <&kp LANG2 &to BASE>;
+        };
+
+        BL_mod: BL_mod {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings =
+                <&macro_press>,
+                <&mo MOD &macro_param_1to1>,
+                <&macro_press>,
+                <&kp MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_param_1to1>,
+                <&macro_release>,
+                <&kp MACRO_PLACEHOLDER>,
+                <&macro_release>,
+                <&mo MOD>;
+        };
+
+        ng_on: ng_on {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp LANG1 &to NAGINATA>;
+            //bindings = <&macro_tap &kp CAPS &to NAGINATA>;
+        };
+    
+        ng_off: ng_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp LANG2 &to BASE>;
+            //bindings = <&macro_tap &kp CAPS &to BASE>;
+        };
+    };
+
+	combos {
+		compatible = "zmk,combos";
+		combo_ng_on {
+			timeout-ms = <300>;
+			key-positions = <74 96>;
+			bindings = <&ng_on>;
+			layers = <0 1>;
+		};
+	
+		combo_ng_off {
+			timeout-ms = <300>;
+			key-positions = <62 64>;
+			bindings = <&ng_off>;
+			layers = <0 1>;
+    	};
     };
 };
 
@@ -130,7 +213,7 @@
 };
 
 
-// コンボ無効化　新下駄が薙刀の編集モード相性悪いため
+// コンボ無効化　新下駄が薙刀の編集モード相性悪いため。zmk新下駄を改変で作成したのでそちらで対応にした。
 	/// {
 	  //macros {
 	    //// 1) Shift+Enter → Backspace
@@ -250,7 +333,7 @@
 	    //};
 	  //};
 	//};
-// ← ここまで無効
+// ← ここまで無効ちなみに薙刀式ではなく筆者改変新下駄です
 
 
 / {
@@ -259,23 +342,23 @@
 //BASE
         layer_0 {
             bindings =<
-                &kp ESC        &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F12 &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp PSCRN &tog_ls_off &tog_ls_on &kp DEL
-				&kp GRAVE      &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                         &kp INT3 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL
-				&kp TAB        &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                        &kp RBKT &kp Y &kp U &kp I &kp O &kp P &kp LBKT &kp RBKT
-				&mt LCTRL CAPS &kp A  &kp S  &kp D  &kp F &kp G     &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp BACKSLASH
-				&kp LSHFT      &kp Z  &kp X  &kp C  &kp V &kp B     &kp RBKT &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                    &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &kp INT1 &kp UP
-				&kp LCTRL      &kp LWIN &kp LALT &mo NAGINATA &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &kp LCTRL               &lt RAISE RET &SandS LSHFT SPACE           &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT
+                &kp ESC         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F12 &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp PSCRN &tog_ls_off &tog_ls_on &kp DEL
+				&kp GRAVE       &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                         &kp INT3 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL
+				&kp TAB         &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                        &kp RBKT &kp Y &kp U &kp I &kp O &kp P &kp LBKT &kp RBKT
+				&CAP_NGON_CTRL  &kp A  &kp S  &kp D  &kp F &kp G     &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp BACKSLASH
+				&mt LSHFT LANG2 &kp Z  &kp X  &kp C  &kp V &kp B     &kp RBKT &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                    &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &kp INT1 &kp UP
+				&mt LCTRL CAPS  &kp LWIN &kp LALT &mo MOUSE &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &kp LCTRL               &lt RAISE RET &SandS LSHFT SPACE           &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
 //NAGINATA
         layer_1 {
             bindings =<
                 &kp ESC         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F12 &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp PSCRN &tog_ls_off &tog_ls_on &kp DEL
-				&kp GRAVE       &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS                                     &kp INT1 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp INT3
-				&kp TAB         &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp U &kp I &kp O &kp P &kp EQUAL                                          &kp APOS &kp Y &kp U &kp I &kp O &kp P &kp EQUAL &kp LBKT
-				&mt LCTRL CAPS  &kp A  &kp S  &kp D  &kp F &kp G    &kp H &kp J &kp K &kp L &kp SEMI &kp SQT                                         &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp RBKT 
-				&mt LSHFT LANG1 &kp Z  &kp X  &kp C  &kp V &kp B    &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &lt SCROLL BACKSLASH                     &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &lt SCROLL BACKSLASH &kp UP
-				&mt LCTRL LANG2 &kp LWIN &kp LALT &mo NAGINATA &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &SandS LSHFT SPACE &kp A &kp B &kp LCTRL               &lt RAISE RET  &SandS LSHFT SPACE           &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT
+				&kp GRAVE       &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                                     &kp INT1 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp INT3
+				&kp TAB         &ng Q  &ng W  &ng E  &ng R &ng T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                          &kp APOS &ng Y &ng U &ng I &ng O &ng P &kp EQUAL &kp LBKT
+				&CAP_NGOFF_CTRL &ng A  &ng S  &ng D  &ng F &ng G    &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPAC                                         &kp LBKT &ng H &ng J &ng K &ng L &ng SEMI &ng SQT &kp RBKT 
+				&mt LSHFT LANG1 &ng Z  &ng X  &ng C  &ng V &ng B    &kp RBKT &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                     &kp RBKT &ng N &ng M &ng COMMA &ng DOT &ng SLASH &lt SCROLL BACKSLASH &kp UP
+				&mt LCTRL CAPS  &kp LWIN &kp LALT &mo MOUSE &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &SandS LSHFT SPACE &kp A &kp B &kp LCTRL               &lt RAISE RET  &SandS LSHFT SPACE           &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
 //Mouse
@@ -293,10 +376,10 @@
         layer_3 {
             bindings =<
                 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
-				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
-				&trans &kp LS(N1)  &kp LS(N2) &kp LS(N3) &kp LS(N4)  &kp LS(N5) &trans &trans &trans &trans &trans &trans               &trans &kp LS(N6)  &kp LS(N7) &kp LS(N8) &kp LS(N9)  &kp LS(N0) &trans &trans
-				&trans &kp N1  &kp N2 &kp N3 &kp N4  &kp N5 &trans &trans &trans &trans &trans &trans               &trans &kp N6 &kp N7  &kp N8 &kp N9 &kp N0 &trans &trans
-				&trans &kp LS(N1)  &kp LS(N2) &kp LS(N3) &kp LS(N4)  &kp LS(N5) &trans &trans &trans &trans &trans &trans               &trans &kp LS(N6)  &kp LS(N7) &kp LS(N8) &kp LS(N9)  &kp LS(N0) &trans &trans
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS  &kp KP_PLUS &trans &trans
+				&trans &kp LS(EQUAL)  &kp LS(N7) &kp LS(N8) &kp LS(N9)  &kp LS(N0) &trans &trans &trans &trans &trans &trans               &kp LS(INT3) &kp COMMA &kp N7 &kp N8 &kp N9  &kp KP_PLUS &kp LS(INT1) &kp LS(INT3)
+				&trans &kp LS(MINUS)  &kp LS(N4) &kp LS(N5) &kp LS(N6)  &kp LS(LBKT) &trans &trans &trans &trans &trans &trans               &kp LS(RBKT) &kp RET &kp N4  &kp N5 &kp N6 &kp EQUAL &kp LS(SQT) &kp LS(BACKSLASH)
+				&trans &kp LS(N0)  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(RBKT) &trans &trans &trans &trans &trans &trans               &kp LS(LBKT) &kp N0  &kp N1 &kp N2 &kp N3  &kp DOT &kp LS(SLASH) &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
             >;
         };
@@ -357,3 +440,4 @@
         };
     };
 };
+
