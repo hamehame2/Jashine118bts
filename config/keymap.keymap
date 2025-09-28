@@ -60,29 +60,29 @@
             display-name = "SandS";
 		};
 
-	    CAP_NGON_CTRL: cap_ng_on_ctrl {
-	      compatible = "zmk,behavior-hold-tap";
-	      #binding-cells = <0>;
-	      // お好みで調整
-	      tapping-term-ms = <200>;
-	      quick-tap-ms    = <125>;
-	      flavor = "balanced"; // "tap-preferred" / "hold-preferred" も可
+	    //CAP_NGON_CTRL: cap_ng_on_ctrl {
+	      //compatible = "zmk,behavior-hold-tap";
+	      //#binding-cells = <0>;
+	      //// お好みで調整
+	      //tapping-term-ms = <200>;
+	      //quick-tap-ms    = <125>;
+	      //flavor = "balanced"; // "tap-preferred" / "hold-preferred" も可
 	
-	      // bindings は <タップ時, ホールド時>
-	      bindings = <&cap_ng_on &kp LCTRL>;
-		};
+	      //// bindings は <タップ時, ホールド時>
+	      ////bindings = <&cap_ng_on &kp LCTRL>;
+		//};
 
-	    CAP_NGOFF_CTRL: cap_ng_off_ctrl {
-	      compatible = "zmk,behavior-hold-tap";
-	      #binding-cells = <0>;
-	      // お好みで調整
-	      tapping-term-ms = <200>;
-	      quick-tap-ms    = <125>;
-	      flavor = "balanced"; // "tap-preferred" / "hold-preferred" も可
+	    //CAP_NGOFF_CTRL: cap_ng_off_ctrl {
+	      //compatible = "zmk,behavior-hold-tap";
+	      //#binding-cells = <0>;
+	      //// お好みで調整
+	      //tapping-term-ms = <200>;
+	      //quick-tap-ms    = <125>;
+	      //flavor = "balanced"; // "tap-preferred" / "hold-preferred" も可
 	
-	      // bindings は <タップ時, ホールド時>
-	      bindings = <&cap_ng_off &kp LCTRL>;
-        };
+	      //// bindings は <タップ時, ホールド時>
+	      ////bindings = <&cap_ng_off &kp LCTRL>;
+        //};
     };
 };
 
@@ -127,17 +127,17 @@
                 <&mo SCROLL>;
         };
 
-	    cap_ng_on: cap_ng_on {
-	      compatible = "zmk,behavior-macro";
-	      #binding-cells = <0>;
-	      bindings = <&kp LANG1 &to NAGINATA>;
-        };
+	    //cap_ng_on: cap_ng_on {
+	      //compatible = "zmk,behavior-macro";
+	      //#binding-cells = <0>;
+	      //bindings = <&kp LANG1 &to NAGINATA>;
+        //};
 
-	    cap_ng_off: cap_ng_off {
-	      compatible = "zmk,behavior-macro";
-	      #binding-cells = <0>;
-	      bindings = <&kp LANG2 &to BASE>;
-        };
+	    //cap_ng_off: cap_ng_off {
+	      //compatible = "zmk,behavior-macro";
+	      //#binding-cells = <0>;
+	      //bindings = <&kp LANG2 &to BASE>;
+        //};
 
         BL_mod: BL_mod {
             compatible = "zmk,behavior-macro-one-param";
@@ -345,9 +345,9 @@
                 &kp ESC         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F12 &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp PSCRN &tog_ls_off &tog_ls_on &kp DEL
 				&kp GRAVE       &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                         &kp INT3 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL
 				&kp TAB         &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                        &kp RBKT &kp Y &kp U &kp I &kp O &kp P &kp LBKT &kp RBKT
-				&CAP_NGON_CTRL  &kp A  &kp S  &kp D  &kp F &kp G     &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp BACKSLASH
+				&mt LCTRL CAPS  &kp A  &kp S  &kp D  &kp F &kp G     &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp BACKSLASH
 				&mt LSHFT LANG2 &kp Z  &kp X  &kp C  &kp V &kp B     &kp RBKT &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                    &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &kp INT1 &kp UP
-				&mt LCTRL CAPS  &kp LWIN &kp LALT &mo MOUSE &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &kp LCTRL               &lt RAISE RET &SandS LSHFT SPACE           &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT
+				&kp LCTRL       &kp LWIN &kp LALT &mo MOUSE &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &kp LCTRL               &lt RAISE RET &SandS LSHFT SPACE           &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
 //NAGINATA
@@ -356,9 +356,9 @@
                 &kp ESC         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F12 &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp PSCRN &tog_ls_off &tog_ls_on &kp DEL
 				&kp GRAVE       &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                                     &kp INT1 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp INT3
 				&kp TAB         &ng Q  &ng W  &ng E  &ng R &ng T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                          &kp APOS &ng Y &ng U &ng I &ng O &ng P &kp EQUAL &kp LBKT
-				&CAP_NGOFF_CTRL &ng A  &ng S  &ng D  &ng F &ng G    &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                         &kp LBKT &ng H &ng J &ng K &ng L &ng SEMI &ng SQT &kp RBKT 
+				&mt LCTRL CAPS  &ng A  &ng S  &ng D  &ng F &ng G    &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                         &kp LBKT &ng H &ng J &ng K &ng L &ng SEMI &ng SQT &kp RBKT 
 				&mt LSHFT LANG1 &ng Z  &ng X  &ng C  &ng V &ng B    &kp RBKT &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                     &kp RBKT &ng N &ng M &ng COMMA &ng DOT &ng SLASH &lt SCROLL BACKSLASH &kp UP
-				&mt LCTRL CAPS  &kp LWIN &kp LALT &mo MOUSE &lt MUHEN BSPC &ng SPACE &lt LOWER RET &lt RAISE RET &SandS LSHFT SPACE &kp A &kp B &kp LCTRL               &lt RAISE RET  &ng SPACE           &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT
+				&kp LCTRL       &kp LWIN &kp LALT &mo MOUSE &lt MUHEN BSPC &ng SPACE &lt LOWER RET &lt RAISE RET &SandS LSHFT SPACE &kp A &kp B &kp LCTRL               &lt RAISE RET  &ng SPACE           &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
 //Mouse
