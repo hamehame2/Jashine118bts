@@ -400,7 +400,7 @@
                 &trans &trans &trans &trans &trans &trans &trans &bt BT_CLR_ALL &bt BT_CLR &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1              &bt BT_CLR_ALL &bt BT_CLR &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &trans &kp LS(UP) &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &kp LS(UP) &trans &trans &trans &trans
-				&trans &kp HOME &kp LS(LEFT) &kp LS(DOWN) &kp LS(RIGHN) &trans &trans &trans &trans &trans &trans &trans               &trans &trans &kp LS(LEFT) &kp LS(DOWN) &kp LS(RIGHT) &kp END &trans &trans
+				&trans &kp HOME &kp LS(LEFT) &kp LS(DOWN) &kp LS(RIGHT) &trans &trans &trans &trans &trans &trans &trans               &trans &trans &kp LS(LEFT) &kp LS(DOWN) &kp LS(RIGHT) &kp END &trans &trans
 				&trans &kp HOME &kp PG_UP &kp PG_DN &kp END &trans &trans &trans &trans &trans &trans &trans               &trans &trans &kp HOME &kp PG_UP &kp PG_DN &kp END &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
             >;
