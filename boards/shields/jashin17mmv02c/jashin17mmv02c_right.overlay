@@ -87,7 +87,7 @@
             /* <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,これだと縦横にいけるが正確性にかける*/
             /*<&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,OSによってはこれだがデフォでは上下逆 */
             <&zip_xy_transform 0>,
-            <&zip_xy_scaler 1 4>,       /* 縦スクロール速度 */
+            <&zip_xy_scaler 1 5>,       /* 縦スクロール速度 */
 	        <&y_to_scroll_mapper>;      /* ★ 角括弧つきに ← 片軸（Yのみ）へ変換 */
         /* process-next; // 縦スクロール中もAML維持したい時だけ有効化 */
     };
@@ -99,7 +99,7 @@
             <&zip_y_scaler 0 1>,                           /* ← 縦成分(Y)を0にしてポインタ揺れを消す */
             /* XY_SWAP は使わず、必要なら X の反転だけ */
             <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
-            <&zip_xy_scaler 1 4>,       /* 横スクロール速度 */
+            <&zip_xy_scaler 1 5>,       /* 横スクロール速度 */
             <&x_to_hscroll_mapper>;        /* ← 片軸（Xのみ）へ変換 */
         /* process-next; // 横スクロール中もAML維持したい時だけ有効化 */
     	};
