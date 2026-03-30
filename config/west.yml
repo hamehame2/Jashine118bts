@@ -23,7 +23,8 @@ manifest:
     - name: zmk-layout-shift
       remote: kot149
       revision: v1
-    - name: zmk-naginata
+   # - name: zmk-naginata
+    - name: zmk-behavior-mejiro
       remote: hamehame2
       revision: main
     # - name: zmk-rgbled-widget
