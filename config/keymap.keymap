@@ -217,7 +217,7 @@
 		COMBO2(n71_to_4, 54, 74, &kp N4, LOWER);
 		COMBO2(n82_to_5, 55,75, &kp N5, LOWER);
 		COMBO2(n93_to_6, 56,76, &kp N6, LOWER);
-		COMBO2(equa_to_equa, 57,77, &kp EQUA, LOWER);
+		COMBO2(equa_to_equa, 57,77, &kp EQUAL, LOWER);
 		COMBO2(ls_to_lssqt, 58, 78, &kp LS(SQT), LOWER);
 		COMBO2(bslh_to_lsBSLH, 59, 79, &kp LS(BACKSLASH), LOWER);
 
