@@ -37,6 +37,14 @@
     };
 };
 
+#define COMBO2(name, p1, p2, out, layer) \
+    name { \
+        timeout-ms = <30>; \
+        key-positions = <p1 p2>; \
+        bindings = <out>; \
+        layers = <layer>; \
+    }
+
 / {
     behaviors {
         // スクロール用のbehaviorの設定
@@ -185,6 +193,12 @@
 			bindings = <&ng_off>;
 			layers = <0 1>;
     	};
+
+		COMBO2(qz_to_a, 41, 61, &kp A, BASE)
+		COMBO2(wx_to_s, 42, 62, &kp S, BASE)
+		COMBO2(74_to_1, 55, 75, &kp N1, LOWER)
+		COMBO2(85_to_2, 56,76, &kp N2, LOWER)
+
     };
 };
 
