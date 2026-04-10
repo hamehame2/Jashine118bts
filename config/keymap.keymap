@@ -221,6 +221,10 @@
 		COMBO2(ls_to_lssqt, 58, 78, &kp LS(SQT), LOWER);
 		COMBO2(bslh_to_lsBSLH, 59, 79, &kp LS(BACKSLASH), LOWER);
 
+//LS(N0)  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(RBKT)
+//&kp LS(LBKT) &kp N0  &kp N1 &kp N2 &kp N3  &kp DOT &kp LS(SLASH) &trans
+
+
     };
 };
 
@@ -393,7 +397,7 @@
 				&kp GRAVE       &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                                     &kp INT1 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp INT3
 				&kp TAB         &ng Q  &ng W  &ng E  &ng R &ng T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                          &kp APOS &ng Y &ng U &ng I &ng O &ng P &kp EQUAL &kp LBKT
 				&BL_mod LCTRL   &ng A  &ng S  &ng D  &ng F &ng G    &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                         &kp LBKT &ng H &ng J &ng K &ng L &ng SEMI &ng SQT &kp RBKT 
-				&mt LSHFT LANG1 &mo 3  &mo 4  &ng C  &ng V &ng C    &ng C   &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                     &ng COMMA &ng COMMA &ng M &ng COMMA &ng DOT &ng SLASH &lt RAISE RET &kp UP
+				&mt LSHFT CAPS  &mo 3  &mo 4  &ng C  &ng V &ng C    &ng C   &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                     &ng COMMA &ng COMMA &ng M &ng COMMA &ng DOT &ng SLASH &lt RAISE RET &kp UP
 				&BL_mod LCTRL   &BL_mod LWIN &BL_mod LALT &lt LOWER RET &lt MUHEN BSPC &ng V          &ng B &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &BL_mod LCTRL   &ng N  &ng M           &BL_mod LCTRL  &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
