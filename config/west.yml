@@ -24,7 +24,8 @@ manifest:
       remote: kot149
       revision: v1
    # - name: zmk-naginata
-    - name: zmk-behavior-mejiro
+   # - name: zmk-behavior-mejiro
+    - name: zmk-behavior-plover64    
       remote: hamehame2
       revision: main
     # - name: zmk-rgbled-widget
