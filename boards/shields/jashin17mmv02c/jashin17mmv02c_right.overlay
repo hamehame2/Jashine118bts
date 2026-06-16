@@ -3,6 +3,7 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 #include "layouts.dtsi"
+#include <mouse-gesture.dtsi>
 
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
@@ -76,8 +77,7 @@
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
         <&zip_xy_scaler 3 5>,   /* カーソル速度 5分の3*/
-        <&zip_temp_layer 2 350>;
-        <&zip_temp_layer MOUSE 350>,
+        <&zip_temp_layer 2 350>,
         <&zip_mouse_gesture>;
 
     /* 縦スクロール：レイヤー3でのみ有効 */
