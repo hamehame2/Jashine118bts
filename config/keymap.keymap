@@ -27,9 +27,9 @@
 
 
 &zip_mouse_gesture {
-    stroke-size = <200>;
-    idle-timeout-ms = <120>;
-    gesture-cooldown-ms = <120>;
+    stroke-size = <170>;
+    idle-timeout-ms = <80>;
+    gesture-cooldown-ms = <80>;
     enable-eager-mode;
     suppress-movement;
 
