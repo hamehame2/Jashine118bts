@@ -11,6 +11,7 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
+#include <mouse-gesture.dtsi>
 
 #define BASE     0
 #define NAGINATA 1
@@ -21,9 +22,37 @@
 #define MOD      6
 #define SCROLL   3
 #define MUHEN   7
-#define HENKA   8
+#define GESTURE  8
 
 
+
+&zip_mouse_gesture {
+    stroke-size = <200>;
+    idle-timeout-ms = <120>;
+    gesture-cooldown-ms = <120>;
+    enable-eager-mode;
+    suppress-movement;
+
+    next {
+        pattern = <GESTURE_RIGHT>;
+        bindings = <&kp TAB>;
+    };
+
+    prev {
+        pattern = <GESTURE_LEFT>;
+        bindings = <&kp LS(TAB)>;
+    };
+
+    decide {
+        pattern = <GESTURE_UP>;
+        bindings = <&kp UP>;
+    };
+
+    cancel {
+        pattern = <GESTURE_DOWN>;
+        bindings = <&kp DOWN>;
+    };
+};
 
 
 / {
@@ -386,7 +415,7 @@
 				&kp GRAVE       &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                         &kp INT3 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL
 				&kp TAB         &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                        &kp RBKT &kp Y &kp U &kp I &kp O &kp P &kp LBKT &kp RBKT
 				&mt LCTRL CAPS  &kp Z  &kp X  &kp C  &kp V &kp B     &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                    &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &kp INT1 &kp BACKSLASH
-				&mt LSHFT LANG2 &kp A  &kp S  &kp D  &kp F &kp G     &kp RBKT &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                                &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp UP
+				&mt LSHFT LANG2 &kp A  &kp S  &kp D  &kp F &kp G     &lt MUHEN BSPC &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                                &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp UP
 				&kp LCTRL       &kp LWIN &kp LALT &mo MOUSE &lt MUHEN BSPC &kp SPACE &lt LOWER RET &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &kp LCTRL               &lt RAISE RET &kp SPACE           &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
@@ -406,7 +435,7 @@
             bindings =<
                 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
-				&kp TAB &kp LWIN &kp LALT &kp LCTRL &kp TAB &kp LSHFT &trans &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans &trans &trans &trans
+				&kp TAB &kp LWIN &kp LCTRL &kp LALT &mouse_gesture &kp LSHFT &trans &trans &trans &trans &trans &trans   &trans &trans &mouse_gesture &kp LALT &kp LCTRL &kp LWIN &trans &trans
 				&trans &trans &mkp RCLK &mkp MCLK &mkp_exit_AML LCLK &msc SCRL_UP    &msc SCRL_LEFT &trans &trans &trans &trans &trans      &msc SCRL_LEFT   &msc SCRL_UP    &mkp LCLK &mkp LCLK  &mkp MCLK       &mkp RCLK &trans &trans
 				&trans &trans &trans &mkp MB4 &mkp MB5 &msc SCRL_DOWN  &msc SCRL_RIGHT &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
@@ -419,7 +448,7 @@
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS  &kp KP_PLUS &trans &trans
 				&trans &kp LS(EQUAL)  &kp LS(N7) &kp LS(N8) &kp LS(N9)  &kp LS(N0) &trans &trans &trans &trans &trans &trans               &kp LS(INT3) &kp COMMA &kp N7 &kp N8 &kp N9  &kp KP_PLUS &kp LS(INT1) &kp LS(INT3)
 				&trans &kp LS(N0)  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(RBKT) &trans &trans &trans &trans &trans &trans               &kp LS(LBKT) &kp N0  &kp N1 &kp N2 &kp N3  &kp DOT &kp LS(SLASH) &trans
-				&trans &none       &kp LS(N4) &kp LS(N5) &kp LS(N6)  &kp LS(LBKT) &trans &trans &trans &trans &trans &trans               &kp LS(RBKT) &kp RET &kp N4  &kp N5 &kp N6 &kp EQUAL &kp LS(SQT) &kp LS(BACKSLASH)
+				&trans &trans      &mo 4 &kp LS(N5) &kp LS(N6)  &kp LS(LBKT) &trans &trans &trans &trans &trans &trans               &kp LS(RBKT) &kp RET &kp N4  &kp N5 &kp N6 &kp EQUAL &kp LS(SQT) &kp LS(BACKSLASH)
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
             >;
         };
@@ -430,7 +459,7 @@
 				&trans &kp LC(F1)   &kp LC(F2)   &kp LC(F3)   &kp LC(F4)     &kp LC(F5) &trans &trans &trans &trans &trans &trans               &trans &kp LC(F6)       &kp LC(F7)       &kp LC(F8)       &kp LC(F9)        &kp LC(F10)   &kp LC(F11)     &trans
 				&trans &kp LC(HOME) &kp PG_UP    &kp LC(UP)   &kp PG_DN      &kp LC(END) &trans &trans &trans &trans &trans &trans               &trans &kp LC(LS(HOME)) &kp LC(PG_UP)    &kp LC(LS(UP))   &kp LC(PG_DN)     &kp LC(SPACE) &kp LC(LS(DEL))  &trans 
 				&trans &kp HOME     &kp LC(LEFT) &kp LC(DOWN) &kp LC(RIGHT)  &kp END &kp KP_NUM  &trans &trans &trans &trans &trans              &kp LC(F8)        &kp SPACE        &kp LC(LS(LEFT)) &kp LC(LS(DOWN)) &kp LC(LS(RIGHT)) &kp LS(SPACE) &kp LC(END)    &trans
-				&trans &kp LC(F8) &none &kp LC(LS(END)) &kp LC(LS(PG_UP)) &kp LC(LS(PG_DN)) &kp LC(F12) &trans &trans &trans &trans &trans             &kp LG(LS(PSCRN)) &kp F6           &kp F7           &kp F8           &kp F9            &kp F10       &kp F11   &trans
+				&trans &kp LC(F8) &trans &kp LC(LS(END)) &kp LC(LS(PG_UP)) &kp LC(LS(PG_DN)) &kp LC(F12) &trans &trans &trans &trans &trans             &kp LG(LS(PSCRN)) &kp F6           &kp F7           &kp F8           &kp F9            &kp F10       &kp F11   &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
             >;
         };
@@ -452,7 +481,7 @@
 				&kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                         &kp INT3 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL
 				&kp TAB   &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                        &kp RBKT &kp Y &kp U &kp I &kp O &kp P &kp LBKT &kp RBKT
 				&trans    &kp A  &kp S  &kp D  &kp F &kp G     &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp BACKSLASH
-				&trans    &kp Z  &kp X  &kp C  &kp V &kp B     &kp RBKT &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                    &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &kp INT1 &kp UP
+				&trans    &kp Z  &kp X  &kp C  &kp V &kp B     &lt MUHEN BSPC &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                    &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &kp INT1 &kp UP
 				&trans    &trans &trans &mo MOUSE &lt MUHEN BSPC &SandS LSHFT SPACE &lt LOWER RET &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &trans               &lt RAISE RET &SandS LSHFT SPACE           &trans  &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
@@ -463,16 +492,16 @@
 				&trans &kp LC(EXCL) &kp LC(AT) &kp LC(HASH)    &kp LC(DLLR)       &kp LC(PRCNT) &trans &trans &trans &trans &trans &trans           &trans &kp LC(CARET)  &kp LC(AMPS)   &kp LC(ASTRK) &kp LC(LPAR) &kp LC(RPAR) &trans &trans
 				&trans &kp HOME       &kp F17        &kp UP        &kp LS(RIGHT)   &kp END  &trans &trans &trans &trans &trans &trans               &trans &kp LALT       &kp LC(U)        &kp TAB        &kp F7         &kp LC(P)       &kp PG_DN &trans
 				&trans &kp LC(BSPC)   &kp LEFT       &kp DOWN      &kp RIGHT       &kp DEL &kp KP_NUM &trans &trans &trans &trans &trans            &kp LC(F8) &kp BSPC       &kp LG(SLASH)    &kp LC(Z)      &kp LA(TAB)    &kp LC(LA(TAB))   &kp LC(F) &trans
-				&trans &kp LC(D)      &kp LC(X)      &kp  LC(C)    &kp LC(V)       &kp F16 &kp F12 &trans &trans &trans &trans &trans               &kp RBKT  &kp LC(LA(TAB)) &kp LC(LS(TAB))  &kp LC(Y)      &kp LC(TAB)    &kp LG(TAB)     &kp LG(D) &trans
+				&trans &kp LC(D)      &kp LC(X)      &kp  LC(C)    &kp LC(V)       &kp F16 &trans &trans &trans &trans &trans &trans               &kp RBKT  &kp LC(LA(TAB)) &kp LC(LS(TAB))  &kp LC(Y)      &kp LC(TAB)    &kp LG(TAB)     &kp LG(D) &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &kp LC(W) &kp LC(W) &trans &trans
             >;
         };
-//HENKA not use now
+//GESTURE not use now
         layer_8 {
             bindings =<
                 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
-				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &kp LWIN &kp LCTRL &kp LALT &mouse_gesture &trans &trans &trans &trans &trans &trans &trans               &trans &trans &mouse_gesture &kp LALT &kp LCTRL &kp LWIN &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
