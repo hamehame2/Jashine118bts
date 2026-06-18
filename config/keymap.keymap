@@ -27,9 +27,9 @@
 
 
 &zip_mouse_gesture {
-    stroke-size = <170>;
+    stroke-size = <160>;
     idle-timeout-ms = <80>;
-    gesture-cooldown-ms = <80>;
+    gesture-cooldown-ms = <70>;
     enable-eager-mode;
     suppress-movement;
 
@@ -223,19 +223,19 @@
 			layers = <0 1>;
     	};
 
-		COMBO2(qz_to_a, 41, 61, &kp A, BASE);
-		COMBO2(wx_to_s, 42, 62, &kp S, BASE);
-		COMBO2(ec_to_d, 43, 63, &kp D, BASE);
-		COMBO2(rv_to_f, 44, 64, &kp F, BASE);
-		COMBO2(tb_to_g, 45, 65, &kp G, BASE);
-		COMBO2(lbkt_to_LBKT, 52, 72, &kp LBKT, BASE);
-		COMBO2(yn_to_h, 53, 73, &kp H, BASE);
-		COMBO2(tb_to_j, 54, 74, &kp J, BASE);
-		COMBO2(tb_to_k, 55, 75, &kp K, BASE);
-		COMBO2(tb_to_l, 56, 76, &kp L, BASE);
-		COMBO2(tb_to_semi, 57, 77, &kp SEMI, BASE);
-		COMBO2(tb_to_sqt, 58, 78, &kp SQT, BASE);
-		COMBO2(tb_to_BSLH, 59, 79, &kp BACKSLASH, BASE);
+		//COMBO2(qz_to_a, 41, 61, &kp A, BASE);
+		//COMBO2(wx_to_s, 42, 62, &kp S, BASE);
+		//COMBO2(ec_to_d, 43, 63, &kp D, BASE);
+		//COMBO2(rv_to_f, 44, 64, &kp F, BASE);
+		//COMBO2(tb_to_g, 45, 65, &kp G, BASE);
+		//COMBO2(lbkt_to_LBKT, 52, 72, &kp LBKT, BASE);
+		//COMBO2(yn_to_h, 53, 73, &kp H, BASE);
+		//COMBO2(tb_to_j, 54, 74, &kp J, BASE);
+		//COMBO2(tb_to_k, 55, 75, &kp K, BASE);
+		//COMBO2(tb_to_l, 56, 76, &kp L, BASE);
+		//COMBO2(tb_to_semi, 57, 77, &kp SEMI, BASE);
+		//COMBO2(tb_to_sqt, 58, 78, &kp SQT, BASE);
+		//COMBO2(tb_to_BSLH, 59, 79, &kp BACKSLASH, BASE);
 		COMBO2(ls_tos_lsMin, 41, 61, &kp LS(MINUS), LOWER);
 		COMBO2(n4_tos_lsN4, 42, 62, &kp LS(N4), LOWER);
 		COMBO2(n5_tos_lsN5, 43, 63, &kp LS(N5), LOWER);
@@ -414,9 +414,9 @@
                 &kp ESC         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F12 &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp PSCRN &tog_ls_off &tog_ls_on &kp DEL
 				&kp GRAVE       &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                         &kp INT3 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL
 				&kp TAB         &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                        &kp RBKT &kp Y &kp U &kp I &kp O &kp P &kp LBKT &kp RBKT
-				&mt LCTRL CAPS  &kp Z  &kp X  &kp C  &kp V &kp B     &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                    &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH  &kp INT1 &kp BACKSLASH
-				&mt LSHFT LANG2 &kp A  &kp S  &kp D  &kp F &kp G     &lt MUHEN BSPC &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                                &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI &kp SQT &kp UP
-				&kp LCTRL       &kp LWIN &kp LALT &mo MOUSE &lt MUHEN BSPC &kp SPACE &lt LOWER RET &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &kp LCTRL               &lt RAISE RET &kp SPACE           &kp LCTRL  &kp LEFT &kp DOWN &kp RIGHT
+				&mt LCTRL CAPS  &kp A &kp S  &kp D  &kp F &kp G     &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                 &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI  &kp SQT &kp BACKSLASH
+				&kp LSHFT       &kp Z &kp X  &kp C  &kp V &kp B     &lt MUHEN BSPC &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                                &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp INT1 &kp UP
+				&BL_mod LCTRL   &BL_mod LWIN &BL_mod LALT &mo MOUSE &lt MUHEN BSPC &kp SPACE &lt LOWER RET &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &kp LCTRL               &lt RAISE RET &kp SPACE           &BL_mod LCTRL  &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
 //NAGINATA
