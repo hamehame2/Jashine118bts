@@ -27,9 +27,9 @@
 
 
 &zip_mouse_gesture {
-    stroke-size = <160>;
-    idle-timeout-ms = <80>;
-    gesture-cooldown-ms = <70>;
+    stroke-size = <130>;
+    idle-timeout-ms = <70>;
+    gesture-cooldown-ms = <60>;
     enable-eager-mode;
     suppress-movement;
 
@@ -375,9 +375,9 @@
             bindings =<
                 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS  &kp KP_PLUS &trans &trans
-				&trans &kp LS(EQUAL)  &kp LS(N7) &kp LS(N8) &kp LS(N9)  &kp LS(N0) &trans &trans &trans &trans &trans &trans               &kp LS(INT3) &kp COMMA &kp N7 &kp N8 &kp N9  &kp KP_PLUS &kp LS(INT1) &kp LS(INT3)
-				&kp LCTRL &kp LS(N0)  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(RBKT) &trans &trans &trans &trans &trans &trans               &kp LS(LBKT) &kp N0  &kp N1 &kp N2 &kp N3  &kp N0 &kp LS(SLASH) &trans
-				&trans &none      &mo 4 &kp LS(N5) &kp LS(N6)  &kp LS(LBKT) &trans &trans &trans &trans &trans &trans               &kp LS(RBKT) &kp RET &kp RET  &kp N0 &kp DOT &kp EQUAL &kp LS(SQT) &kp LS(BACKSLASH)
+				&trans &kp LS(EQUAL)  &kp LS(N7) &kp LS(N8) &kp LS(N9)  &kp LS(N0) &trans &trans &trans &trans &trans &trans               &kp LS(INT3) &kp COMMA &kp N7 &kp N8 &kp N9  &kp KP_PLUS &kp LBKT &kp RBKT
+				&kp LCTRL &kp LS(N0)  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(RBKT) &trans &trans &trans &trans &trans &trans               &kp LS(LBKT) &kp RBKT  &kp N1 &kp N2 &kp N3  &kp N0 &kp SQT &kp BACKSLASH
+				&trans &none      &mo 4 &kp LS(N5) &kp LS(N6)  &kp LS(LBKT) &trans &trans &trans &trans &trans &trans               &kp LS(RBKT) &kp RET &kp RET  &kp N0 &kp KP_DOT &kp EQUAL &kp LS(SQT) &kp LS(BACKSLASH)
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
             >;
         };
