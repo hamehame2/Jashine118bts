@@ -378,7 +378,7 @@
 				&trans &kp LS(EQUAL)  &kp LS(N7) &kp LS(N8) &kp LS(N9)  &kp LS(N0) &trans &trans &trans &trans &trans &trans               &kp LS(INT3) &kp COMMA &kp N7 &kp N8 &kp N9  &kp KP_PLUS &kp LBKT &kp RBKT
 				&kp LCTRL &kp LS(N0)  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(RBKT) &trans &trans &trans &trans &trans &trans               &kp LS(LBKT) &kp RBKT  &kp N1 &kp N2 &kp N3  &kp N0 &kp SQT &kp BACKSLASH
 				&trans &none      &mo 4 &kp LS(N5) &kp LS(N6)  &kp LS(LBKT) &trans &trans &trans &trans &trans &trans               &kp LS(RBKT) &kp RET &kp RET  &kp N0 &kp KP_DOT &kp EQUAL &kp LS(SQT) &kp LS(BACKSLASH)
-				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
+				&BL_mod LCTRL   &BL_mod LWIN &BL_mod LALT &mo MOUSE &kp BSPC &kp SPACE &kp RET &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &kp LCTRL               &lt RAISE RET &kp SPACE           &BL_mod LCTRL  &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
 //RAISE
@@ -389,7 +389,7 @@
 				&trans &kp LC(HOME) &kp PG_UP    &kp LC(UP)   &kp PG_DN      &kp LC(END) &trans &trans &trans &trans &trans &trans               &trans &kp LC(LS(HOME)) &kp LC(PG_UP)    &kp LC(LS(UP))   &kp LC(PG_DN)     &kp LC(SPACE) &kp LC(LS(DEL))  &trans 
 				&trans &kp HOME     &kp LC(LEFT) &kp LC(DOWN) &kp LC(RIGHT)  &kp END &kp KP_NUM  &trans &trans &trans &trans &trans              &kp LC(F8)        &kp SPACE        &kp LC(LS(LEFT)) &kp LC(LS(DOWN)) &kp LC(LS(RIGHT)) &kp LS(SPACE) &kp LC(END)    &trans
 				&trans &kp LC(F8) &trans &kp LC(LS(END)) &kp LC(LS(PG_UP)) &kp LC(LS(PG_DN)) &kp LC(F12) &trans &trans &trans &trans &trans             &kp LG(LS(PSCRN)) &kp F6           &kp F7           &kp F8           &kp F9            &kp F10       &kp F11   &trans
-				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
+				&trans &trans &trans &trans &trans &trans &lt LOWER RET &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
             >;
         };
 //ADJUST
