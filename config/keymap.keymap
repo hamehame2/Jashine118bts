@@ -97,6 +97,25 @@
             display-name = "SandS";
 		};
 
+
+        /*
+         * 短押し：RET
+         * 長押し：ng_lower_hold
+         */
+        ng_lower: ng_lower {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+
+            flavor = "hold-preferred";
+            tapping-term-ms = <80>;
+
+            bindings =
+                <&ng_lower_hold>,
+                <&kp RET>;
+		};
+
+
+
 	    //CAP_NGON_CTRL: cap_ng_on_ctrl {
 	      //compatible = "zmk,behavior-hold-tap";
 	      //#binding-cells = <0>;
@@ -163,6 +182,28 @@
                 <&macro_release>,
                 <&mo SCROLL>;
         };
+
+
+ /* NAGINATA → LOWER のホールド側 */
+        ng_lower_hold: ng_lower_hold {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+
+            bindings =
+                /* ホールド確定時：IME OFF → LOWERを押下 */
+                <&macro_tap &kp LANG2>,
+                <&macro_press &mo LOWER>,
+
+                /* ng_lowerキー自体が離されるまで待つ */
+                <&macro_pause_for_release>,
+
+                /* キーを離した時：LOWER解除 → IME ON */
+                <&macro_release &mo LOWER>,
+                <&macro_tap &kp LANG1>;
+        };
+
 
 	    //cap_ng_on: cap_ng_on {
 	      //compatible = "zmk,behavior-macro";
@@ -282,127 +323,7 @@
 };
 
 
-// コンボ無効化　新下駄が薙刀の編集モード相性悪いため。zmk新下駄を改変で作成したのでそちらで対応にした。
-	/// {
-	  //macros {
-	    //// 1) Shift+Enter → Backspace
-	    //se_then_bs: se_then_bs {
-	      //compatible = "zmk,behavior-macro";
-	      //#binding-cells = <0>;
-	      //bindings = <&kp LS(RET) &kp BSPC>;
-	    //};
-	
-	 //   // 2) Enter → End
-	   // enter_then_end: enter_then_end {
-	     // compatible = "zmk,behavior-macro";
-	      //#binding-cells = <0>;
-	      //bindings = <&kp RET &kp END>;
-	    //};
-	
-	    //// 3) ← の後に 再変換 (Win + /)
-	    //left_then_henkan: left_then_henkan {
-	      //compatible = "zmk,behavior-macro";
-	      //#binding-cells = <0>;
-	      //bindings = <&kp LEFT &kp LG(SLASH)>;
-	    //};
-	  //};
-	//};
-	
-	
-	/// {
-	  //combos {
-	    //compatible = "zmk,combos";
-	
-	    //// 84 + 94 → Enter
-	    //combo_enter_84_94 {
-	      //timeout-ms = <80>;
-	      //key-positions = <84 94>;
-	      //bindings = <&kp RET>;
-	      //// layers = <0>;
-	    //};
-	
-	    //// 63 + 64 + 77 → カタカナ変換 (F7)
-	    //combo_katakana_f7 {
-	      //timeout-ms = <80>;
-	      //key-positions = <63 64 77>;
-	      //bindings = <&kp F7>;
-	      //// layers = <0>;
-	    //};
-	
-	    //// 63 + 64 + 54 → Shift+Enter → Backspace
-	    //combo_se_bs_63_64_54 {
-	      //timeout-ms = <80>;
-	      //key-positions = <63 64 54>;
-	      //bindings = <&se_then_bs>;
-	      //// layers = <0>;
-	    //};
-	
-	    //// 63 + 64 + 55 → ← の後に 再変換 (Win+/)
-	    //combo_left_then_henkan_63_64_55 {
-	      //timeout-ms = <80>;
-	      //key-positions = <63 64 55>;
-	      //bindings = <&left_then_henkan>;
-	      //// layers = <0>;
-	    //};
-	
-	    //// 63 + 64 + 56 → Delete
-	    //combo_del_63_64_56 {
-	      //timeout-ms = <80>;
-	      //key-positions = <63 64 56>;
-	      //bindings = <&kp DEL>;
-	      //// layers = <0>;
-	    //};
-	
-	    //// 63 + 64 + 57 → Esc
-	    //combo_esc_63_64_57 {
-	      //timeout-ms = <80>;
-	      //key-positions = <63 64 57>;
-	      //bindings = <&kp ESC>;
-	      //// layers = <0>;
-	    //};
-	
-	    //// 63 + 64 + 73 → Enter → End
-	    //combo_enter_then_end_63_64_73 {
-	      //timeout-ms = <80>;
-	      //key-positions = <63 64 73>;
-	      //bindings = <&enter_then_end>;
-	      //// layers = <0>;
-	    //};
-	
-	    //// 63 + 64 + 74 → → (RIGHT)
-	    //combo_right_63_64_74 {
-	      //timeout-ms = <80>;
-	      //key-positions = <63 64 74>;
-	      //bindings = <&kp RIGHT>;
-	      //// layers = <0>;
-	    //};
-	
-	    //// 63 + 64 + 75 → Shift+→
-	    //combo_sright_63_64_75 {
-	      //timeout-ms = <80>;
-	      //key-positions = <63 64 75>;
-	      //bindings = <&kp LS(RIGHT)>;
-	      //// layers = <0>;
-	    //};
-	
-	    //// 63 + 64 + 94 → ← (LEFT)
-	    //combo_left_63_64_94 {
-	      //timeout-ms = <80>;
-	      //key-positions = <63 64 94>;
-	      //bindings = <&kp LEFT>;
-	      //// layers = <0>;
-	    //};
-	
-	    //// 63 + 64 + 95 → Shift+←
-	    //combo_sleft_63_64_95 {
-	      //timeout-ms = <80>;
-	      //key-positions = <63 64 95>;
-	      //bindings = <&kp LS(LEFT)>;
-	      //// layers = <0>;
-	    //};
-	  //};
-	//};
-// ← ここまで無効ちなみに薙刀式ではなく筆者改変新下駄です
+
 
 
 / {
@@ -414,7 +335,7 @@
                 &kp ESC         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F12 &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp PSCRN &tog_ls_off &tog_ls_on &kp DEL
 				&kp GRAVE       &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                         &kp INT3 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp EQUAL
 				&kp TAB         &kp Q &kp W  &kp E  &kp R  &kp T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                        &kp RBKT &kp Y &kp U &kp I &kp O &kp P &kp LBKT &kp RBKT
-				&mt LCTRL CAPS  &kp A &kp S  &kp D  &kp F &kp G     &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                 &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI  &kp SQT &kp BACKSLASH
+				&BL_mod LCTRL   &kp A &kp S  &kp D  &kp F &kp G     &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                 &kp LBKT &kp H &kp J &kp K &kp L &kp SEMI  &kp SQT &kp BACKSLASH
 				&kp LSHFT       &kp Z &kp X  &kp C  &kp V &kp B     &lt MUHEN BSPC &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                                &kp RBKT &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp INT1 &kp UP
 				&BL_mod LCTRL   &BL_mod LWIN &BL_mod LALT &mo MOUSE &lt MUHEN BSPC &kp SPACE &lt LOWER RET &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &kp LCTRL               &lt RAISE RET &kp SPACE           &BL_mod LCTRL  &kp LEFT &kp DOWN &kp RIGHT
             >;
@@ -423,10 +344,10 @@
         layer_1 {
             bindings =<
                 &kp ESC         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11                                      &kp F12 &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp PSCRN &tog_ls_off &tog_ls_on &kp DEL
-				&kp GRAVE       &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                                     &kp INT1 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp INT3
+				&BL_mod LCTRL   &kp N1 &kp N2 &kp N3 &kp N4 &kp N5  &kp N6 &kp KP_NUM &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS &kp MINUS                                     &kp INT1 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS &kp INT3
 				&ng Z           &ng Q  &ng W  &ng E  &ng R &ng T    &kp Y &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS  &kp Y                                          &kp APOS &ng Y &ng U &ng I &ng O &ng P &ng DOT &ng DOT
 				&ng X           &ng A  &ng S  &ng D  &ng F &ng G    &kp LSHFT  &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp LSHFT  &kp SPACE                                         &kp LBKT &ng H &ng J &ng K &ng L &ng SEMI &ng SQT &ng SQT 
-				&mt LSHFT CAPS  &mo 3  &mo 4  &ng C  &ng V &ng C    &ng C   &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                     &ng COMMA &ng COMMA &ng M &ng COMMA &ng SQT &ng DOT &lt RAISE RET &kp UP
+				&mt LSHFT CAPS  &ng_lower  &mo 4  &ng C  &ng V &ng C    &ng C   &kp KP_N1 &kp KP_N2 &kp KP_N3  &kp RET &kp LBKT                     &ng COMMA &ng COMMA &ng M &ng COMMA &ng SQT &ng DOT &lt RAISE RET &kp UP
 				&BL_mod LCTRL   &BL_mod LWIN &BL_mod LALT &lt LOWER RET &lt MUHEN BSPC &ng V          &ng B &lt RAISE RET &kp N0 &kp KP_DOT &kp SPACE &BL_mod LCTRL   &ng N  &ng M           &BL_mod LCTRL  &kp LEFT &kp DOWN &kp RIGHT
             >;
         };
@@ -447,8 +368,8 @@
                 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans &kp KP_SLASH &kp KP_MULTIPLY &kp KP_MINUS  &kp KP_PLUS &trans &trans
 				&trans &kp LS(EQUAL)  &kp LS(N7) &kp LS(N8) &kp LS(N9)  &kp LS(N0) &trans &trans &trans &trans &trans &trans               &kp LS(INT3) &kp COMMA &kp N7 &kp N8 &kp N9  &kp KP_PLUS &kp LS(INT1) &kp LS(INT3)
-				&trans &kp LS(N0)  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(RBKT) &trans &trans &trans &trans &trans &trans               &kp LS(LBKT) &kp N0  &kp N1 &kp N2 &kp N3  &kp DOT &kp LS(SLASH) &trans
-				&trans &trans      &mo 4 &kp LS(N5) &kp LS(N6)  &kp LS(LBKT) &trans &trans &trans &trans &trans &trans               &kp LS(RBKT) &kp RET &kp N4  &kp N5 &kp N6 &kp EQUAL &kp LS(SQT) &kp LS(BACKSLASH)
+				&kp LCTRL &kp LS(N0)  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(RBKT) &trans &trans &trans &trans &trans &trans               &kp LS(LBKT) &kp N0  &kp N1 &kp N2 &kp N3  &kp N0 &kp LS(SLASH) &trans
+				&trans &none      &mo 4 &kp LS(N5) &kp LS(N6)  &kp LS(LBKT) &trans &trans &trans &trans &trans &trans               &kp LS(RBKT) &kp RET &kp RET  &kp N0 &kp DOT &kp EQUAL &kp LS(SQT) &kp LS(BACKSLASH)
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans               &trans &trans               &trans &trans &trans &trans
             >;
         };
